@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  serverExternalPackages: ["pdf-"]
+  serverExternalPackages: ["pdf-"],
+  devIndicators: false,
 };
 
 export default nextConfig;
