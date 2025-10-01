@@ -1,25 +1,21 @@
-// src/components/PDFUploadButton.tsx
 "use client";
 
 import { useState, useRef } from "react";
 import { processPdfFile } from "@/app/upload/actions";
 import { Button } from "@/components/ui/button";
-import { Loader2, Upload } from "lucide-react";
+import { Loader2, Paperclip } from "lucide-react";
 
 export default function PDFUploadButton() {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleClick = () => {
-    fileInputRef.current?.click(); // 👈 opens hidden file picker
-  };
+  const handleClick = () => fileInputRef.current?.click();
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setIsLoading(true);
-
     try {
       const formData = new FormData();
       formData.append("pdf", file);
@@ -34,7 +30,7 @@ export default function PDFUploadButton() {
 
   return (
     <>
-      {/* Hidden input */}
+      {/* Hidden file input */}
       <input
         type="file"
         accept=".pdf"
@@ -51,11 +47,12 @@ export default function PDFUploadButton() {
         size="icon"
         onClick={handleClick}
         disabled={isLoading}
+        className="h-full p-2 flex items-center justify-center"
       >
         {isLoading ? (
           <Loader2 className="h-5 w-5 animate-spin" />
         ) : (
-          <Upload className="h-5 w-5" />
+          <Paperclip className="h-5 w-5" />
         )}
       </Button>
     </>
