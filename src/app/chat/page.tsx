@@ -20,6 +20,7 @@ import {
 } from "@/components/ai-elements/prompt-input";
 import { Response } from "@/components/ai-elements/response";
 import { Loader } from "@/components/ai-elements/loader";
+import PDFUploadButton from "../upload/page";
 
 export default function RAGChatBot() {
   const [input, setInput] = useState("");
@@ -74,6 +75,7 @@ export default function RAGChatBot() {
           </PromptInputBody>
           <PromptInputToolbar>
             <PromptInputTools>
+              <PDFUploadButton />
               {/* Model selector, web search, etc. */}
             </PromptInputTools>
             <PromptInputSubmit disabled={!input && !status} status={status} />
